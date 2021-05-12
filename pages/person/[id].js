@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useSession, getSession } from 'next-auth/client'
 import useSWR from 'swr'
 
 const fetcher = async (url) => {
@@ -12,6 +13,12 @@ const fetcher = async (url) => {
 }
 
 export default function Person() {
+  const [session, loading] = useSession()
+
+  if (loading) return null
+
+  if (!loading && !session) return <p>Access Denied</p>
+
   const { query } = useRouter()
   const { data, error } = useSWR(
     () => query.id && `/api/people/${query.id}`,
