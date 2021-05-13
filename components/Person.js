@@ -1,11 +1,13 @@
-import Link from 'next/link'
+import ListItem from '@material-ui/core/ListItem';
 
-export default function Person({ person }) {
+function ListItemLink (props) {
+  return <ListItem button component="a" {...props} />;
+}
+
+export default function Person ({ person }) {
   return (
-    <li>
-      <Link href="/person/[id]" as={`/person/${person.id}`}>
-        <a>{person.name}</a>
-      </Link>
-    </li>
+    <ListItemLink href={`/person/${person.id}`} as={`/person/${person.id}`}>
+      {person.name}
+    </ListItemLink>
   )
 }

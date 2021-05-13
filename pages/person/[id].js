@@ -12,18 +12,19 @@ const fetcher = async (url) => {
   return data
 }
 
-export default function Person() {
+export default function Person () {
   const [session, loading] = useSession()
+  const { query } = useRouter()
+  console.log(query.id);
+  const { data, error } = useSWR(
+    () => query.id && `/api/people/${query.id}`,
+    fetcher
+  )
 
   if (loading) return null
 
   if (!loading && !session) return <p>Access Denied</p>
 
-  const { query } = useRouter()
-  const { data, error } = useSWR(
-    () => query.id && `/api/people/${query.id}`,
-    fetcher
-  )
 
   if (error) return <div>{error.message}</div>
   if (!data) return <div>Loading...</div>
