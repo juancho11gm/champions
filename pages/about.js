@@ -1,18 +1,15 @@
-import { useSession, getSession } from 'next-auth/client'
-import Header from '../components/Header';
+import Layout from '../components/Layout'
 
-export default function About () {
-    const [session, loading] = useSession()
-
-    if (loading) return null
-
-    if (!loading && !session) return <p>Access Denied</p>
-
+function About() {
     return (
-        <>
-            <Header />
-            <h1>About...</h1>
-            <a href='/'>go back</a>
-        </>
+        <Layout>
+            <div>
+                <h1>About...</h1>
+                <a href='/'>go back</a>
+            </div>
+        </Layout>
+
     )
 }
+
+export default About;

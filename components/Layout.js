@@ -17,4 +17,4 @@ const Layout = ({ children, title = 'Home' }) => {
   );
 };
 
-export default Layout;
+export { Layout };

@@ -1,7 +1,7 @@
 import { List, makeStyles } from '@material-ui/core';
 import { useSession } from 'next-auth/client'
 import Typography from '@material-ui/core/Typography';
-import Person from '../components/Person'
+import { Person } from '../components/Person'
 
 const useStyles = makeStyles({
     title: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     }
 })
 
-function ListItem ({ list }) {
+function ListItem({ list }) {
     const [session] = useSession();
     const classes = useStyles();
 
