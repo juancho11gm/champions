@@ -1,7 +1,27 @@
 body {
     margin: 0;
+    min-height: 100vh;
 }
 
 a.selected {
     text-decoration: underline rgba(63, 81, 181, 0.5);
+}
+
+.header__nav {
+    display: flex;
+}
+
+ul .character-link {
+    justify-content: center;
+}
+
+.subtitle {
+    margin-left: 16px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 16px;
 }

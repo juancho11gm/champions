@@ -1,7 +1,7 @@
 import ListItem from '@material-ui/core/ListItem';
 
 function ListItemLink (props) {
-  return <ListItem button component="a" {...props} />;
+  return <ListItem className="character-link" button component="a" {...props} />;
 }
 
 function Person ({ person }) {

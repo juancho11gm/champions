@@ -2,6 +2,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core';
 import { signIn, signOut, useSession } from 'next-auth/client'
 import { AppLink } from './AppLink';
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Header () {
+function Header() {
     const classes = useStyles();
     const [isAuthenticated] = useSession();
 
@@ -37,9 +38,9 @@ function Header () {
         <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
             <Toolbar className={classes.toolbar}>
                 <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                    Champions
+                    Star wars
                 </Typography>
-                <nav>
+                <nav className="header__nav">
                     <AppLink href="/" className={classes.AppLink}>
                         Home
                     </AppLink>
@@ -49,6 +50,8 @@ function Header () {
                     <AppLink href="/about" className={classes.AppLink}>
                         About
                      </AppLink>
+
+                    {isAuthenticated && <Avatar alt="User image" src={isAuthenticated.user.image} />}
                 </nav>
                 <Button color="primary" variant="outlined" className={classes.AppLink} onClick={authCallback}>
                     {isAuthenticated ? 'Sign Out' : 'Sign In'}

@@ -2,6 +2,7 @@ import { List, makeStyles } from '@material-ui/core';
 import { useSession } from 'next-auth/client'
 import Typography from '@material-ui/core/Typography';
 import { Person } from '../components/Person'
+import { NewPerson } from '../components/NewPerson'
 
 const useStyles = makeStyles({
     title: {
@@ -23,6 +24,7 @@ function ListItem({ list }) {
                     ))
                 }
             </List>}
+            {session && <NewPerson/>}
         </>
     );
 }
